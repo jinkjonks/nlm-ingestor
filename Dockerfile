@@ -5,9 +5,9 @@ ENV APP_HOME /app
 # install Java
 RUN mkdir -p /usr/share/man/man1 && \
   apt-get update -y && \
-  apt-get install -y openjdk-17-jre-headless
+  apt-get install -y --no-install-recommends openjdk-17-jre-headless
 # install essential packages
-RUN apt-get install -y \
+RUN apt-get install -y  --no-install-recommends\
   libxml2-dev libxslt-dev \
   build-essential libmagic-dev
 # install tesseract
@@ -16,13 +16,13 @@ RUN apt-get install -y \
   lsb-release \
   && echo "deb https://notesalexp.org/tesseract-ocr5/$(lsb_release -cs)/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/notesalexp.list > /dev/null \
   && apt-get update -oAcquire::AllowInsecureRepositories=true \
-  && apt-get install notesalexp-keyring -oAcquire::AllowInsecureRepositories=true -y --allow-unauthenticated \
+  && apt-get install notesalexp-keyring -oAcquire::AllowInsecureRepositories=true -y --allow-unauthenticated  --no-install-recommends\
   && apt-get update \
-  && apt-get install -y \
+  && apt-get install -y  --no-install-recommends\
   tesseract-ocr libtesseract-dev \
   && wget -P /usr/share/tesseract-ocr/5/tessdata/ https://github.com/tesseract-ocr/tessdata/raw/main/eng.traineddata
-RUN apt-get install unzip -y && \
-  apt-get install git -y && \
+RUN apt-get install unzip -y --no-install-recommends && \
+  apt-get install git -y --no-install-recommends && \
   apt-get autoremove -y
 WORKDIR ${APP_HOME}
 COPY . ./
