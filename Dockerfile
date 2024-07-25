@@ -35,4 +35,4 @@ RUN python -m nltk.downloader -d /usr/share/nltk_data punkt
 RUN python -c "import tiktoken; tiktoken.get_encoding(\"cl100k_base\")"
 RUN chmod +x run.sh
 EXPOSE 5001
-CMD ./run.sh
+CMD ["./run.sh"]
