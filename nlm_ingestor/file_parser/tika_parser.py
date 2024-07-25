@@ -31,13 +31,18 @@ class TikaFileParser(FileParser):
 
         if ensure_bool(os.environ.get("TIKA_OCR", False)):
             headers = None
-        return parser.from_file(filepath, xmlContent=True, requestOptions={'headers': headers, 'timeout': timeout})
+        return parser.from_file(
+            filepath,
+            xmlContent=True,
+            requestOptions={"headers": headers, "timeout": timeout},
+        )
 
     def parse_to_clean_html(self, filepath):
         if not find_tika_header(filepath):
             with open(filepath) as file:
                 file_data = BeautifulSoup(
-                    file.read(), features="html.parser",
+                    file.read(),
+                    features="html.parser",
                 ).prettify()
             return parser.from_buffer(file_data, xmlContent=True)
         else:
