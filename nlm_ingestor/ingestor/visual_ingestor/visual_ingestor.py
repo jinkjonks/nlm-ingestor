@@ -6285,15 +6285,18 @@ class Doc:
             for line in lines_tag_list:
                 # Not doing exact match on top of the next element as sometimes lines are thick
                 if (
-                    bottom1 <= float(line["y1"]) <= (top2 + 2.0)
-                    and line["x1"] <= left1 <= line["x2"]
-                    and line["x1"] <= left2 <= line["x2"]
-                    and line["x1"] < right1 <= line["x2"]
-                    and line["x1"] < right2 <= line["x2"]
+                    float(bottom1) <= float(line["y1"]) <= float(top2 + 2.0)
+                    and float(line["x1"]) <= float(left1) <= float(line["x2"])
+                    and float(line["x1"]) <= float(left2) <= float(line["x2"])
+                    and float(line["x1"]) < float(right1) <= float(line["x2"])
+                    and float(line["x1"]) < float(right2) <= float(line["x2"])
                 ):
                     if check_gap:
                         if (
-                            abs(abs(line["y1"] - bottom1) - abs(top2 - line["y1"]))
+                            abs(
+                                abs(float(line["y1"]) - float(bottom1))
+                                - abs(float(top2) - float(line["y1"]))
+                            )
                             < 2.0
                         ):
                             ret_val = True
@@ -6302,9 +6305,9 @@ class Doc:
                     break
                 elif (
                     x_axis_relaxed
-                    and bottom1 <= line["y1"] <= (top2 + 2.0)
-                    and line["x1"] <= left1 < line["x2"]
-                    and line["x1"] < right1 <= line["x2"]
+                    and float(bottom1) <= float(line["y1"]) <= (float(top2) + 2.0)
+                    and float(line["x1"]) <= float(left1) < float(line["x2"])
+                    and float(line["x1"]) < float(right1) <= float(line["x2"])
                 ):
                     if check_gap:
                         if (
