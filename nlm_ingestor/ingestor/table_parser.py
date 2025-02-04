@@ -1,6 +1,5 @@
 import logging
 
-import numpy as np
 import pandas as pd
 
 
@@ -79,7 +78,7 @@ class TableParser:
             cur_index += 1
 
         if cur_index == len(table_infos):
-            self.logger.error(f"No actual table rows other than headers.. skipping current table")
+            self.logger.error("No actual table rows other than headers.. skipping current table")
             return
         # only one level of column_name, flatten
         if len(column_names) == 1 and isinstance(column_names[0], list):

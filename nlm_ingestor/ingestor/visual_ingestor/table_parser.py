@@ -271,7 +271,7 @@ class TableParser:
                             col_span[1] = max(col_style[2], col_span[1])
                         else:
                             if TABLE_COL_DEBUG:
-                                print(f"\tusing span")
+                                print("\tusing span")
                             if len(col_spans) > max_table_cols and \
                                     col_idx < len(col_spans) - 1 and col_span[1] < col_style[2] <= \
                                     col_spans[col_idx + 1][1]:

@@ -546,7 +546,7 @@ class IndentParser:
                                 # Add a level when the left aligned block has a header parent.
                                 new_stack.append(new_class)
                                 new_class_added = True
-                            if (larger_font_left_aligned and not level_class_name["block_type"] in ["header"]) or \
+                            if (larger_font_left_aligned and level_class_name["block_type"] not in ["header"]) or \
                                     smaller_font_left_aligned:
                                 # Keep the level same if we encounter a slightly larger font but left aligned.
                                 level = level - 1
@@ -663,7 +663,7 @@ class IndentParser:
             # if prev_class_name: # and not class_name == prev_class_name and prev_block_is_header:
             # need to add center alignment detection here
             if LEVEL_DEBUG:
-                print(f'\n====', block['block_text'][0:80], '=====\n')
+                print('\n====', block['block_text'][0:80], '=====\n')
             # if is_child_block:
             #     indent = 0 if NO_INDENT else indent + 1
             #     if is_table_start:

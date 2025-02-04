@@ -1,9 +1,7 @@
 from bs4 import BeautifulSoup
 from nlm_ingestor.ingestor_utils.ing_named_tuples import LineStyle
-from nlm_ingestor.ingestor.visual_ingestor import block_renderer
 from nlm_ingestor.ingestor_utils.utils import sent_tokenize
 from nlm_ingestor.ingestor import line_parser
-import codecs
 
 
 class SECDoc:

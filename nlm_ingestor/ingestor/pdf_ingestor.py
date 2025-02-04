@@ -2,8 +2,6 @@ import json
 import logging
 import re
 import numpy as np
-from collections import defaultdict, namedtuple
-from typing import Optional
 
 from bs4 import BeautifulSoup
 

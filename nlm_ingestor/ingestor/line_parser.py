@@ -55,7 +55,6 @@ list_types = {
     "·": "circle",
     "�": "special_char",
     "▪": "very_small_square",
-    "▪": "very_small_square",
     "○": "hollow_circle",
     "􀁸": "hollow_squere",
     "–": "dash",
@@ -278,7 +277,7 @@ class Line:
         self.is_header_without_comma = (
                 not sentence_structure
                 and not self.has_list_char
-                and not self.first_char in footnote_types
+                and self.first_char not in footnote_types
                 and has_enough_titles
                 and not last_word_number
                 and (
@@ -291,7 +290,7 @@ class Line:
                 and not self.last_word_is_stop_word
                 and not self.is_zipcode_or_po
                 and not last_letter_is_punctuation
-                and not "://" in self.text  # url pattern
+                and "://" not in self.text  # url pattern
         )
         self.is_header = self.is_header_without_comma and \
                          ((not self.text.count(',') > 1) if not self.text.lower().startswith('section') else True)

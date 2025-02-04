@@ -29,7 +29,7 @@ class BlockRenderer:
 
     def render_merged_cell(self, block, block_idx, tag, sent_idx, html_str):
         block_sents = block["block_sents"]
-        margin_left_attr = f"style=''"
+        margin_left_attr = "style=''"
         block_class_attr = f"class=\"{block['block_class']}"
         sent_attrs = margin_left_attr + " " + block_class_attr
         if len(block_sents) == 1:
@@ -155,11 +155,11 @@ class BlockRenderer:
 
             if 'is_table_end' in block:
                 body_str = body_str + "</tbody></table>"
-                body_str += f'<br /><div><button class="ant-btn" button_type="approve-table">Approve Table Above</button>' \
-                            f'<button class="ant-btn" button_type="flag-table">Flag Table Above</button>' \
-                            f'<button class="ant-btn" button_type="undo-table-approval">Undo Approval</button>' \
-                            f'<button class="ant-btn" button_type="undo-table-flag">Undo Flag</button>' \
-                            f'</div><br />'
+                body_str += '<br /><div><button class="ant-btn" button_type="approve-table">Approve Table Above</button>' \
+                            '<button class="ant-btn" button_type="flag-table">Flag Table Above</button>' \
+                            '<button class="ant-btn" button_type="undo-table-approval">Undo Approval</button>' \
+                            '<button class="ant-btn" button_type="undo-table-flag">Undo Flag</button>' \
+                            '</div><br />'
                 is_rendering_table = False
                 html_str = html_str + body_str
 
